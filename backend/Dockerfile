@@ -27,4 +27,4 @@ RUN mkdir -p /app/.hf_cache/home /app/.hf_cache/datasets /app/.hf_cache/hub /app
 
 EXPOSE 7860
 
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-7860}"]

@@ -14,17 +14,17 @@ ENV TOKENIZERS_PARALLELISM=false
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY backend/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY backend ./backend
 
-RUN if [ ! -f /app/faiss_index/index.faiss ] && ls /app/faiss_index/index.faiss.part-* >/dev/null 2>&1; then \
-    cat /app/faiss_index/index.faiss.part-* > /app/faiss_index/index.faiss; \
+RUN if [ ! -f /app/backend/faiss_index/index.faiss ] && ls /app/backend/faiss_index/index.faiss.part-* >/dev/null 2>&1; then \
+    cat /app/backend/faiss_index/index.faiss.part-* > /app/backend/faiss_index/index.faiss; \
     fi
 
 RUN mkdir -p /app/.hf_cache/home /app/.hf_cache/datasets /app/.hf_cache/hub /app/.hf_cache/sentence_transformers
 
 EXPOSE 7860
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "7860"]

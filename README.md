@@ -3,6 +3,8 @@
 Full-stack semantic search over 100K MS MARCO passages with a Next.js frontend,
 FastAPI backend, Sentence Transformers embeddings, and FAISS exact vector search.
 
+Live app: https://semantic-search-engine-t8ld.vercel.app/
+
 ## Technical Stack
 
 - Frontend: Next.js 14, React 18, TypeScript, Tailwind CSS

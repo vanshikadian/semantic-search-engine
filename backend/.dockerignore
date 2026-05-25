@@ -1,0 +1,7 @@
+.hf_cache/
+__pycache__/
+*.pyc
+
+faiss_index/chunks/
+faiss_index/build_state.json
+faiss_index/index.faiss
